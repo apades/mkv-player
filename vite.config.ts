@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 const pr = (...p) => path.resolve(__dirname, ...p)
 
@@ -13,6 +14,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    // viteStaticCopy(pr('')),
     vue(),
     Components({
       // allow auto load markdown components under `./src/components/`

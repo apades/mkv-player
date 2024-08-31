@@ -8,5 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    SubtitleText: typeof import('./components/SubtitleText.vue')['default']
   }
 }
