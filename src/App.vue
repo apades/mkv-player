@@ -7,6 +7,8 @@ import type { SubtitleRow } from './utils/SubtitleManager/types'
 
 const videoRef = ref<HTMLVideoElement>()
 const subtitleManager = new SubtitleManager()
+const videoUrl = ref('https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4')
+
 window.subtitleManager = subtitleManager
 
 useOnce(() => {
@@ -47,7 +49,7 @@ function handleChangeVideo() {
       return
     }
     subtitleManager.reset()
-    videoRef.value.src = URL.createObjectURL(file)
+    videoUrl.value = URL.createObjectURL(file)
     mkvSubtitleParser.parserFile(file).then((res) => {
       res.forEach((item) => {
         subtitleManager.addSubtitle(item.name, item.rows)
@@ -61,7 +63,7 @@ function handleChangeVideo() {
 <template>
   <div>
     <div class="relative bg-black">
-      <video ref="videoRef" class="w-[800px] block mx-auto" controls src="https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4" />
+      <video ref="videoRef" class="w-[800px] block mx-auto" controls :src="videoUrl" />
       <div class="absolute bottom-12 w-full">
         <SubtitleText :subtitle-manager="subtitleManager" />
       </div>
@@ -76,6 +78,7 @@ function handleChangeVideo() {
         <button @click="handleChangeVideo">
           change mkv video
         </button>
+        <input>
       </div>
       <div>subtitle list</div>
       <div

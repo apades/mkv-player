@@ -5,11 +5,11 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "dev": "pnpm build:sw && pnpm dev:web",
+    "dev": "pnpm dev:web",
     "dev:all": "concurrently \"pnpm dev:web\" \"pnpm dev:sw\"",
     "dev:web": "vite",
     "dev:sw": "pnpm build:sw --watch",
-    "build:sw": "tsup --config ./ws.build.ts -d ./ --format iife"
+    "build:sw": "tsup --config ./sw.build.ts -d ./ --format iife"
   },
   "dependencies": {
     "@vueuse/core": "^11.0.3",
